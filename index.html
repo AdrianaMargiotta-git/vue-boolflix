@@ -4,21 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Boolflix</title>
 </head>
 <body>
 
-    <header>
-        <div class="container-haeder">
-
-        </div>
-    </header>
-
-    <main>
-        
-    </main>
+    <div id="app">
+        <header>
+            <div class="container-haeder">
+                <div class="haederInformation">
+                    <strong id="headertext">BOOLFLIX</strong>
+                    <input type="text" placeholder="Inserisci un titolo e premi invio" @keyup.enter="filtroCerca" v-model="cerca">
+                </div>
+            </div>
+        </header>
     
-
+        <main>
+            <div>
+                <ul class="filmList">
+                    <li v-for="film in listaFilm" class="filmElement">
+                        <h2>{{film.title}}</h2>
+                        <h3>{{film.original_title}}</h3>
+                        <p>{{film.original_language}}</p>
+                        <p>{{film.vote_average}}</p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    
 
         <script src="js/script.js"></script>
 
