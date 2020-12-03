@@ -3,7 +3,8 @@ var app = new Vue({
     data: {
         cerca: '',
         listaFilm: [],
-        listaSerieTv: []
+        listaSerieTv: [],
+        srcimg: 'https://image.tmdb.org/t/p/w342'
     },
     methods:{
         filtroCerca() {
