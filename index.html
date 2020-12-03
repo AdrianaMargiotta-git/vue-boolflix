@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Boolflix</title>
@@ -40,7 +41,15 @@
                         </div>
                         <div class="bandiera" v-else>{{ film.original_language}}</div>
                         <!-- end change language con bandiera -->
-                        <p>{{film.vote_average}}</p>
+                        <!-- change voto con stelle -->
+                        <!-- <p>{{film.vote_average}}</p> -->
+                        <div class="votazione">
+                            <!-- approssima il voto per eccesso -->
+                            <i v-for="stelle in approxVote(film.vote_average)" class="fas fa-star"></i>
+                            <!-- stelle che rimangono vuote -->
+                            <i v-for="stelle in 5 - approxVote(film.vote_average)" class="far fa-star"></i>
+                        </div>
+                        <!-- end change voto con stelle -->
                     </li>
                 </ul>
                 <!-- fine lista dei FILM -->
@@ -62,7 +71,15 @@
                         </div>
                         <div class="bandiera" v-else>{{serie.original_language}}</div>
                         <!-- end change language con bandiera -->
-                        <p>{{serie.vote_average}}</p>
+                        <!-- change voto con stelle -->
+                        <!-- <p>{{serie.vote_average}}</p> -->
+                        <div class="votazione">
+                            <!-- approssima il voto per eccesso -->
+                            <i v-for="stelle in approxVote(serie.vote_average)" class="fas fa-star"></i>
+                            <!-- stelle che rimangono vuote -->
+                            <i v-for="stelle in 5 - approxVote(serie.vote_average)" class="far fa-star"></i>
+                        </div>
+                        <!-- end change voto con stelle -->
                     </li>
                 </ul>
                 <!-- fine lista delle SERIE TV -->
