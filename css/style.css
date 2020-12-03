@@ -20,6 +20,10 @@ main {
     background-color: aquamarine;
 }
 
+img{
+    max-width: 100%;
+}
+
 /********************** particular rules for header **********************/
 .container-haeder .haederInformation{
     display: flex;
@@ -55,7 +59,7 @@ main {
 }
 
 .filmElement{
-    flex-basis: 350px;
+    flex-basis: 250px;
     margin: 10px;
     padding: 10px;
     text-align: center;
@@ -73,7 +77,7 @@ main {
 }
     
 .SerieTVElement{
-    flex-basis: 350px;
+    flex-basis: 250px;
     margin: 10px;
     padding: 10px;
     text-align: center;

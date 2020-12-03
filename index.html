@@ -23,26 +23,19 @@
     
         <main>
             <div>
+
                 <!-- lista dei FILM -->
                 <ul class="filmList">
                     <li v-for="film in listaFilm" class="filmElement">
+                        <!-- immagine del film: se c'è esegui src alrtimenti esegui onerror-->
+                        <img class="poster" :src="srcimg + film.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'">
                         <h2>{{film.title}}</h2>
-                        <h3>{{film.original_title}}</h3>
+                        <h3>{{film.name}}</h3>
+                        <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5>
                         <!-- change language con bandiera -->
-                        <!-- <p>{{film.original_language}}</p> -->
-                        <div class="bandiera" v-if="film.original_language === 'it'"> 
-                            <img :src="`img/${film.original_language}.jpg`"> 
-                        </div>
-                        <div class="bandiera" v-else-if="film.original_language === 'en'"> 
-                            <img :src="`img/${film.original_language}.jpg`">
-                        </div>
-                        <div class="bandiera" v-else-if="film.original_language === 'es'"> 
-                            <img :src="`img/${film.original_language}.jpg`">
-                        </div>
-                        <div class="bandiera" v-else>{{ film.original_language}}</div>
+                        <img :src="'img/imgflags/' + film.original_language + '.svg' " alt="" style="width:25px;height:25px;">
                         <!-- end change language con bandiera -->
                         <!-- change voto con stelle -->
-                        <!-- <p>{{film.vote_average}}</p> -->
                         <div class="votazione">
                             <!-- approssima il voto per eccesso -->
                             <i v-for="stelle in approxVote(film.vote_average)" class="fas fa-star"></i>
@@ -53,26 +46,22 @@
                     </li>
                 </ul>
                 <!-- fine lista dei FILM -->
+
                 <!-- lista delle SERIE TV -->
                 <ul class="serieTVList">
                     <li v-for="serie in listaSerieTv" class="SerieTVElement">
+                        <!-- immagine delle serieTV: se c'è esegui src alrtimenti esegui onerror-->
+                        <img class="poster" :src="srcimg + serie.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'">
                         <h2>{{serie.name}}</h2>
-                        <h3>{{serie.original_name}}</h3>
+                        <h5 v-if="serie.name !== serie.original_name">Original title:{{serie.original_name}}</h5>
+
+                        <!-- <h2>{{serie.name}}</h2>
+                        <h3>{{serie.original_name}}</h3> -->
+                        
                         <!-- change language con bandiera -->
-                        <!-- <p>{{serie.original_language}}</p> -->
-                        <div class="bandiera" v-if="serie.original_language === 'it'"> 
-                            <img :src="`img/${serie.original_language}.jpg`"> 
-                        </div>
-                        <div class="bandiera" v-else-if="serie.original_language === 'en'"> 
-                            <img :src="`img/${serie.original_language}.jpg`">
-                        </div>
-                        <div class="bandiera" v-else-if="serie.original_language === 'es'"> 
-                            <img :src="`img/${serie.original_language}.jpg`">
-                        </div>
-                        <div class="bandiera" v-else>{{serie.original_language}}</div>
+                        <img :src="'img/imgflags/' + serie.original_language + '.svg' " alt="" style="width:20px;height:20px;">
                         <!-- end change language con bandiera -->
                         <!-- change voto con stelle -->
-                        <!-- <p>{{serie.vote_average}}</p> -->
                         <div class="votazione">
                             <!-- approssima il voto per eccesso -->
                             <i v-for="stelle in approxVote(serie.vote_average)" class="fas fa-star"></i>
@@ -83,6 +72,7 @@
                     </li>
                 </ul>
                 <!-- fine lista delle SERIE TV -->
+
             </div>
         </main>
     </div>
