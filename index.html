@@ -28,34 +28,27 @@
                 <ul class="filmList">
                     <li v-for="film in listaFilm" class="filmElement">
                         <!-- immagine del film: se c'è esegui src alrtimenti esegui onerror-->
-                        <img class="poster" :src="srcimg + film.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'">
-                        <!-- <h2>{{film.title}}</h2> -->
-                        <!-- <h3>{{film.name}}</h3>
-                        <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5> -->
-                        <!-- change language con bandiera -->
-                        <img :src="'img/imgflags/' + film.original_language + '.svg' " alt="" style="width:25px;height:25px;">
-                        <!-- end change language con bandiera -->
-                        <!-- change voto con stelle -->
-                        <div class="votazione">
-                            <!-- approssima il voto per eccesso -->
-                            <i v-for="stelle in approxVote(film.vote_average)" class="fas fa-star"></i>
-                            <!-- stelle che rimangono vuote -->
-                            <i v-for="stelle in 5 - approxVote(film.vote_average)" class="far fa-star"></i>
-                        </div>
-                        <!-- end change voto con stelle -->
-
+                        <img class="poster" :src="srcimg + film.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'" style="height:400px;">
                         <div class="mockup">
-                            <div class="mockupElement">
-                                <h2 >{{film.title}}</h2>
-                                <h4 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h4>
-                                <p>Overview: {{film.overview}}</p>
+                            <!-- <div class="mockupElement"> -->
+                            <h2>{{film.title}}</h2>
+                            <h4 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h4>
+                            <!-- change language con bandiera -->
+                            <div>
+                                Lingua: <img :src="'img/imgflags/' + film.original_language + '.svg' " alt="" style="width:25px;height:25px;">
                             </div>
-                            <!-- <h2 >Title: {{film.title}}</h2>
-                            <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5> -->
+                            <!-- end change language con bandiera -->
+                            <div class="votazione">
+                                <!-- approssima il voto per eccesso -->
+                                <i v-for="stelle in approxVote(film.vote_average)" class="fas fa-star"></i>
+                                <!-- stelle che rimangono vuote -->
+                                <i v-for="stelle in 5 - approxVote(film.vote_average)" class="far fa-star"></i>
+                            </div>
+                            <p>Overview: {{film.overview}}</p>
                         </div>
-
                     </li>
                 </ul>
+                <!-- fine lista dei FILM -->
                 <!-- fine lista dei FILM -->
 
                 <!-- lista delle SERIE TV -->
