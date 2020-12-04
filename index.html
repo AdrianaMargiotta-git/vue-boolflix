@@ -29,9 +29,9 @@
                     <li v-for="film in listaFilm" class="filmElement">
                         <!-- immagine del film: se c'è esegui src alrtimenti esegui onerror-->
                         <img class="poster" :src="srcimg + film.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'">
-                        <h2>{{film.title}}</h2>
-                        <h3>{{film.name}}</h3>
-                        <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5>
+                        <!-- <h2>{{film.title}}</h2> -->
+                        <!-- <h3>{{film.name}}</h3>
+                        <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5> -->
                         <!-- change language con bandiera -->
                         <img :src="'img/imgflags/' + film.original_language + '.svg' " alt="" style="width:25px;height:25px;">
                         <!-- end change language con bandiera -->
@@ -43,13 +43,23 @@
                             <i v-for="stelle in 5 - approxVote(film.vote_average)" class="far fa-star"></i>
                         </div>
                         <!-- end change voto con stelle -->
+
+                        <div class="mockup">
+                            <div class="mockupElement">
+                                <h2 >Title: {{film.title}}</h2>
+                                <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5>
+                            </div>
+                            <!-- <h2 >Title: {{film.title}}</h2>
+                            <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5> -->
+                        </div>
+
                     </li>
                 </ul>
                 <!-- fine lista dei FILM -->
 
                 <!-- lista delle SERIE TV -->
                 <ul class="serieTVList">
-                    <li v-for="serie in listaSerieTv" class="SerieTVElement">
+                    <li v-for="serie in listaSerieTv" class="serieTVElement">
                         <!-- immagine delle serieTV: se c'è esegui src alrtimenti esegui onerror-->
                         <img class="poster" :src="srcimg + serie.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'">
                         <h2>{{serie.name}}</h2>
