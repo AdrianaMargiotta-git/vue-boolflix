@@ -46,8 +46,9 @@
 
                         <div class="mockup">
                             <div class="mockupElement">
-                                <h2 >Title: {{film.title}}</h2>
-                                <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5>
+                                <h2 >{{film.title}}</h2>
+                                <h4 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h4>
+                                <p>Overview: {{film.overview}}</p>
                             </div>
                             <!-- <h2 >Title: {{film.title}}</h2>
                             <h5 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h5> -->

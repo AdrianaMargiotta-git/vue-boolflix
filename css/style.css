@@ -86,12 +86,20 @@ img{
 .filmElement:hover .mockup .mockupElement{
     display: block;
     position: absolute;
-    transform: translate(-50%);
+    transform: translate(-50%, 50%);
     font-size: 10px;
-    top: 50%;
-    left: 50%;
+    top: 10%;
+    left: 35%;
     color: red;
 }
+
+/* .mockup .mockupElement p{
+    max-height: 50%;
+    overflow-y: auto;
+    word-wrap: break-word;
+    font-size: 14px;
+    max-width: 95;
+} */
 
     /* ul serieTVList */
 .serieTVList{
