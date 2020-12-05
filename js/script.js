@@ -11,7 +11,8 @@ var app = new Vue({
             // inizia la ricerca inserendo nell'input minimo 2 caratteri
             if (this.cerca.length >= 2){
                 this.films(),
-                this.serieTV()
+                this.serieTV(),
+                this.noIntroduction()
             }
             //cancello l'input
             this.cerca = ''
@@ -51,5 +52,9 @@ var app = new Vue({
         approxVote(vote){
             return Math.ceil(vote / 2);
         },
+        //far scomparire il div introduction quando si attiva la ricerca
+        noIntroduction(){
+            document.getElementById('introduction').style.display='none';
+        }
     }
 })

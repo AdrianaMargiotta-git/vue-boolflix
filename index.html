@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <title>Boolflix</title>
 </head>
 <body>
@@ -15,24 +16,27 @@
         <header>
             <div class="container-haeder">
                 <div class="haederInformation">
-                    <strong id="headertext">BOOLFLIX</strong>
+                    <img src="img/font-netflix2.png">
                     <input type="text" placeholder="Inserisci un titolo e premi invio" @keyup.enter="filtroCerca" v-model="cerca">
                 </div>
             </div>
         </header>
-    
         <main>
             <div>
-
-                <!-- lista dei FILM -->
+                <div id="introduction">
+                    <h2>Film, serie TV e tanto altro.</h2>
+                    <h2>Senza limiti.</h2>
+                    <h4>Guarda ci&ograve; che vuoi ovunque. Disdici quando vuoi</h4>
+                    <h6>Buona visione</h6>
+                </div>
+                <!-- inizio lista dei FILM -->
                 <ul class="filmList">
                     <li v-for="film in listaFilm" class="filmElement">
                         <!-- immagine del film: se c'è esegui src alrtimenti esegui onerror-->
                         <img class="poster" :src="srcimg + film.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'" style="height:400px;">
                         <div class="mockup">
-                            <!-- <div class="mockupElement"> -->
                             <h2>{{film.title}}</h2>
-                            <h4 v-if="film.title !== film.original_title">Original title:{{film.original_title}}</h4>
+                            <h4 v-if="film.title !== film.original_title">Original title: {{film.original_title}}</h4>
                             <!-- change language con bandiera -->
                             <div>
                                 Lingua: <img :src="'img/imgflags/' + film.original_language + '.svg' " alt="" style="width:25px;height:25px;">
@@ -49,40 +53,36 @@
                     </li>
                 </ul>
                 <!-- fine lista dei FILM -->
-                <!-- fine lista dei FILM -->
-
-                <!-- lista delle SERIE TV -->
+                <!-- inizio lista delle SERIE TV -->
                 <ul class="serieTVList">
                     <li v-for="serie in listaSerieTv" class="serieTVElement">
                         <!-- immagine delle serieTV: se c'è esegui src alrtimenti esegui onerror-->
-                        <img class="poster" :src="srcimg + serie.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'">
-                        <h2>{{serie.name}}</h2>
-                        <h5 v-if="serie.name !== serie.original_name">Original title:{{serie.original_name}}</h5>
-
-                        <!-- <h2>{{serie.name}}</h2>
-                        <h3>{{serie.original_name}}</h3> -->
-                        
-                        <!-- change language con bandiera -->
-                        <img :src="'img/imgflags/' + serie.original_language + '.svg' " alt="" style="width:20px;height:20px;">
-                        <!-- end change language con bandiera -->
-                        <!-- change voto con stelle -->
-                        <div class="votazione">
-                            <!-- approssima il voto per eccesso -->
-                            <i v-for="stelle in approxVote(serie.vote_average)" class="fas fa-star"></i>
-                            <!-- stelle che rimangono vuote -->
-                            <i v-for="stelle in 5 - approxVote(serie.vote_average)" class="far fa-star"></i>
+                        <img class="poster" :src="srcimg + serie.poster_path" onerror="this.src='img/not-found.png';" alt="img/not-found.png'" style="height:400px;">
+                        <div class="mockup">
+                            <h2>{{serie.name}}</h2>
+                            <h4 v-if="serie.name !== serie.original_name">Original title: {{serie.original_name}}</h4>
+                            <!-- change language con bandiera -->
+                            <div>
+                                Lingua: <img :src="'img/imgflags/' + serie.original_language + '.svg' " alt="" style="width:20px;height:20px;">
+                            </div>
+                            <!-- end change language con bandiera -->
+                            <div class="votazione">
+                                <!-- approssima il voto per eccesso -->
+                                <i v-for="stelle in approxVote(serie.vote_average)" class="fas fa-star"></i>
+                                <!-- stelle che rimangono vuote -->
+                                <i v-for="stelle in 5 - approxVote(serie.vote_average)" class="far fa-star"></i>
+                            </div>
+                            <p>Overview: {{serie.overview}}</p>
                         </div>
-                        <!-- end change voto con stelle -->
                     </li>
                 </ul>
                 <!-- fine lista delle SERIE TV -->
-
             </div>
         </main>
     </div>
     
 
-        <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>
